@@ -6,7 +6,12 @@ jobs:
   build:
     strategy:
       matrix:
-        name: ["RuTa", "Vasia"] 
+        name: 
+        - parse_abp_csv_cf
+        - crop_csv_from_excel_cf
+        - trigger_composer_dag_cf
+        - crop_csv_from_excel_mar_cf
+        - crop_csv_from_excel_mpc_cf        
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
