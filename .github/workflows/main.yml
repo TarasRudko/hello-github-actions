@@ -6,9 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-       include:
-         - name: "RuTa"
-         - name: "Vasia" 
+        name: ["RuTa", "Vasia"] 
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
