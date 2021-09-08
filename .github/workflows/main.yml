@@ -23,7 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          cd src/cloud_functions
+          for requirement in $(ls */requirements.txt); do pip install -r "$requirement" || exit 1; done
+          for requirement in $(ls */requirements-default.txt); do pip install -r "$requirement" || exit 1; done
       - name: Run Test
         run: |
           echo something: $CLOUD_FUNCTION_NAME
