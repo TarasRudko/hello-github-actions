@@ -1,7 +1,7 @@
 name: Deploy BigData
 env:
   default_branch: 'develop'
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   test:
     strategy:
