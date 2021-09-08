@@ -22,8 +22,11 @@ jobs:
           python-version: 3.7.11
       - name: Install dependencies
         run: |
+          ls -la
           python -m pip install --upgrade pip
           cd src/cloud_functions
+          ls -la
+          ls */requirements.txt
           for requirement in $(ls */requirements.txt); do pip install -r "$requirement" || exit 1; done
           for requirement in $(ls */requirements-default.txt); do pip install -r "$requirement" || exit 1; done
       - name: Run Test
