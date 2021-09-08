@@ -20,7 +20,6 @@ jobs:
         uses: ./action-a
         with:
           CLOUD_FUNCTION_NAME: "${{ matrix.name }}"
-      - run: "python --version"
-      - run: "printenv"
-      - run: "echo cloud function name: $INPUT_CLOUD_FUNCTION_NAME"
+        
+
         
