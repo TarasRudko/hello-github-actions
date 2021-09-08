@@ -16,6 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./action-a
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
         with:
+          python-version: 3.7.9
+          architecture: x64
           CLOUD_FUNCTION_NAME: "${{ matrix.name }}"
+      - run: "python --version"
+      - run: "printenv"
+      - run: "echo cloud function name: $INPUT_CLOUD_FUNCTION_NAME"
+        
