@@ -26,10 +26,10 @@ jobs:
           pip install -r requirements.txt
       - name: Run Test
         run: |
-          echo something
+          echo something: $CLOUD_FUNCTION_NAME
           python --version
- #       - with:
- #         CLOUD_FUNCTION_NAME: "${{ matrix.name }}"
+        env:
+          CLOUD_FUNCTION_NAME: "${{ matrix.name }}"
         
           
         
