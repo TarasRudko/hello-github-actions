@@ -24,7 +24,8 @@ jobs:
         run: |
           ls -la
           python -m pip install --upgrade pip
-          cd src/cloud_functions
+          ls src/
+          ls src/cloud_functions
           ls -la
           ls */requirements.txt
           for requirement in $(ls */requirements.txt); do pip install -r "$requirement" || exit 1; done
