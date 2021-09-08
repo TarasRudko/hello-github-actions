@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        name: 
+        cf_name: 
         - parse_abp_csv_cf
         - crop_csv_from_excel_cf
         - trigger_composer_dag_cf
@@ -29,10 +29,7 @@ jobs:
           [ -e "requirements-default.txt" ] && pip install -r "requirements-default.txt" || echo "No requirements-default.txt file found"
           python -m unittest || exit 1        
         env:
-          CLOUD_FUNCTION_NAME: "${{ matrix.name }}"        
-
-        
+          CLOUD_FUNCTION_NAME: "${{ matrix.cf_name }}"
           
-        
 
         
