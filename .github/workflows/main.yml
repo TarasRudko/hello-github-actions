@@ -22,13 +22,10 @@ jobs:
           python-version: 3.7.11
       - name: Install dependencies
         run: |
-          ls -la
           python -m pip install --upgrade pip
-          ls src/cloud_functions/crop_csv_from_excel_cf/
-          cd src/cloud_functions
-          ls */requirements.txt
-          for requirement in $(ls */requirements.txt); do pip install -r "$requirement" || exit 1; done
-          for requirement in $(ls */requirements-default.txt); do pip install -r "$requirement" || exit 1; done
+          cd src/cloud_functions/$CLOUD_FUNCTION_NAME/ || exit 1
+          [ -e "requirements.txt" ] && pip install -r "requirements.txt" || echo "No requirements.txt file found"
+          [ -e "requirements-default" ] && pip install -r "requirements-default" || echo "No requirements-default file found"
       - name: Run Test
         run: |
           echo something: $CLOUD_FUNCTION_NAME
