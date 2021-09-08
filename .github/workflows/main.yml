@@ -1,9 +1,9 @@
-name: A workflow for my Hello World file
-on: push
-
+name: Deploy BigData
+env:
+  default_branch: 'develop'
+on: [push]
 jobs:
-
-  build:
+  test:
     strategy:
       matrix:
         name: 
@@ -12,10 +12,10 @@ jobs:
         - trigger_composer_dag_cf
         - crop_csv_from_excel_mar_cf
         - crop_csv_from_excel_mpc_cf        
-    name: Hello world action
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: ./action-a
         with:
-          MY_NAME: "${{ matrix.name }}"
+          cloud_function_name: "${{ matrix.name }}"
