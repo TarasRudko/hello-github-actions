@@ -15,13 +15,10 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - uses: actions/checkout@v2
       - name: Setup python
-        uses: actions/setup-python@v2
+      - uses: ./action-a
         with:
-          python-version: 3.7.9
-          architecture: x64
           CLOUD_FUNCTION_NAME: "${{ matrix.name }}"
       - run: "python --version"
       - run: "printenv"
