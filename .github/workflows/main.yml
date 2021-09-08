@@ -24,9 +24,8 @@ jobs:
         run: |
           ls -la
           python -m pip install --upgrade pip
-          ls src/
-          ls src/cloud_functions
-          ls -la
+          ls src/cloud_functions/crop_csv_from_excel_cf/
+          cd src/cloud_functions
           ls */requirements.txt
           for requirement in $(ls */requirements.txt); do pip install -r "$requirement" || exit 1; done
           for requirement in $(ls */requirements-default.txt); do pip install -r "$requirement" || exit 1; done
