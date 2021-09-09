@@ -19,7 +19,7 @@ jobs:
           python-version: 3.7.11
       - name: Install dependencies and run tests
         run: |
-          GITHUB_REPO_NAME_ONLY=$(echo $GITHUB_REPOSITORY | sed 's/.*///')
+          GITHUB_REPO_NAME_ONLY=${GITHUB_REPOSITORY##*/}
           echo "GITHUB_REPO_NAME_ONLY=$GITHUB_REPO_NAME_ONLY"
           python -m pip install --upgrade pip
           cd src/cloud_functions/$CLOUD_FUNCTION_NAME || exit 0
