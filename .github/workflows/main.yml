@@ -8,10 +8,7 @@ jobs:
       matrix:
         cf_name: 
         - parse_abp_csv_cf
-        - crop_csv_from_excel_cf
-        - trigger_composer_dag_cf
-        - crop_csv_from_excel_mar_cf
-        - crop_csv_from_excel_mpc_cf        
+        - crop_csv_from_excel_cf       
     name: Run tests
     runs-on: ubuntu-latest
     steps:
@@ -22,6 +19,8 @@ jobs:
           python-version: 3.7.11
       - name: Install dependencies and run tests
         run: |
+          echo "Github repository name: ${github.event.repository.name}"
+          printenv
           python -m pip install --upgrade pip
           cd src/cloud_functions/$CLOUD_FUNCTION_NAME || exit 0
           [ ! -d "tests/" ] && echo "There is no tests for function $CLOUD_FUNCTION_NAME" && exit 0
